@@ -7,33 +7,23 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 export function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    return JSON.parse(window.localStorage.getItem("CONTACTS_KEY")) ?? [];
+  });
   const [filter, setFilter] = useState('');
+  // }
 
-  // componentDidMount() {
+  // useEffect(() => {
+
   //   const savedContacts = localStorage.getItem("CONTACTS_KEY");
   //   const parseSavedContacts = JSON.parse(savedContacts);
+  //   console.log(parseSavedContacts)
+  //   console.log('виконую монтування')
 
   //   if(savedContacts) {
-  //     this.setState({contacts: parseSavedContacts})
-  //   }
-  // }
-
-  // componentDidUpdate(prevState) {
-  //   if(this.state.contacts !== prevState.contacts) {
-  //     localStorage.setItem("CONTACTS_KEY", JSON.stringify(this.state.contacts))
-  //   }
-  // }
-
-  useEffect(() => {
-    const savedContacts = localStorage.getItem("CONTACTS_KEY");
-    const parseSavedContacts = JSON.parse(savedContacts);
-    console.log(parseSavedContacts)
-
-    if(savedContacts) {
-      setContacts(parseSavedContacts)
-        }
-  }, [])
+  //     setContacts(parseSavedContacts)
+  //       }
+  // }, [])
 
   useEffect(() => {
     localStorage.setItem("CONTACTS_KEY", JSON.stringify(contacts))

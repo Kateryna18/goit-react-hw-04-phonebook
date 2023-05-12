@@ -3,7 +3,6 @@ import css from 'components/ContactsList/ContactsList.module.css';
 import PropTypes from 'prop-types';
 
 export function ContactsList({contacts, deleteContact}) {
-  console.log(contacts)
     return (
     <ul className={css.contactsList}>
         {contacts.map(contact => {
